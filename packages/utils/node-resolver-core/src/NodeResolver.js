@@ -872,7 +872,10 @@ export default class NodeResolver {
           field: entry.field,
           filename: path.resolve(pkg.pkgdir, entry.filename),
         };
-      });
+      })
+      .filter(
+          entry => fs.existsSync(entry.filename)
+      );
   }
 
   async loadAsFile({
